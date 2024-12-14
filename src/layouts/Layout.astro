@@ -1,0 +1,61 @@
+---
+import "../styles/global.css";
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { ...customMeta } = Astro.props;
+
+const meta = {
+  type: "website",
+  ...customMeta,
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="preload"
+      href="/fonts/Inter-roman.latin.var.woff2"
+      as="font"
+      type="font/woff2"
+      cross-origin="anonymous"
+    />
+    <title>{meta.title}</title>
+    <meta content={meta.description} name="description" />
+    <meta name="robots" content="follow, index" />
+    <meta property="og:type" content={meta.type} />
+    <meta property="og:site_name" content="Gilberto DN" />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:title" content={meta.title} />
+    <link href="/favicon.ico" rel="shortcut icon" />
+    <link href="/site.webmanifest" rel="manifest" />
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="#ffffff" name="msapplication-TileColor" />
+    <slot name="head" />
+    <script is:inline>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body
+    class="bg-white text-gray-900 dark:bg-black dark:text-gray-100"
+  >
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

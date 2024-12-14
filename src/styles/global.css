@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url("/fonts/Inter-roman.latin.var.woff2") format("woff2");
+  unicode-range: U+0000-007F, U+00A0-0100, U+0131, U+0152-0154, U+02BB-02BD,
+    U+02C6, U+02DA, U+02DC, U+2000-200C, U+2010-2028, U+202F-2060, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+FEFF;
+  font-named-instance: "Regular";
+}
+
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.sticky-nav {
+  backdrop-filter: saturate(180%) blur(20px);
+  transition: background-color 0.1 ease-in-out;
+  @apply sticky top-4 z-10 mx-2 rounded-full;
+}
+
+.prose img {
+  @apply m-0;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  font-weight: 400;
+  font-size: 0.875em;
+  line-height: 1.7142857;
+  margin-top: 1.7142857em;
+  margin-bottom: 1.7142857em;
+  border-radius: 0.375rem;
+  padding-top: 0.8571429em;
+  padding-inline-end: 1.1428571em;
+  padding-bottom: 0.8571429em;
+  padding-inline-start: 1.1428571em;
+}
+
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.crossed {
+  text-decoration: line-through;
+}
+
+@media screen(md) {
+  .sticky-nav {
+    @apply mx-0;
+  }
+}
