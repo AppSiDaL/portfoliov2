@@ -6,6 +6,7 @@ import DescriptionCard from "../components/DescriptionCard";
 import GHCard from "../components/GHCard.astro";
 import ProjectsList from "../components/ProjectsList.astro";
 import ChangeThemeButton from "../components/ChangeThemeButton.astro";
+import ProfileImage from "../images/profile.jpg"
 ---
 
 <Layout title="Welcome to my portfolio" description="Welcome to my portfolio">
@@ -13,7 +14,7 @@ import ChangeThemeButton from "../components/ChangeThemeButton.astro";
   <div class="mt-[-150px]">
     <div class="w-screen flex flex-row">
       <Image
-        src="/profile.jpg"
+        src={ProfileImage}
         alt="A bird."
         width="200"
         height="200"
