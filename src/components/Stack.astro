@@ -1,0 +1,108 @@
+---
+const stack = [
+  {
+    id: 1,
+    name: "HTML",
+    icon: "html5",
+  },
+  {
+    id: 2,
+    name: "CSS",
+    icon: "css3",
+  },
+  {
+    id: 3,
+    name: "TypeScript",
+    icon: "typescript",
+  },
+  {
+    id: 4,
+    name: "React",
+    icon: "react",
+  },
+  {
+    id: 6,
+    name: "MongoDB",
+    icon: "mongodb",
+  },
+  {
+    id: 7,
+    name: "Express",
+    icon: "express",
+  },
+  {
+    id: 8,
+    name: "TailwindCSS",
+    icon: "tailwindcss",
+  },
+  {
+    id: 10,
+    name: "FastAPI",
+    icon: "fastapi",
+  },
+  {
+    id: 11,
+    name: "Python",
+    icon: "python",
+  },
+  {
+    id: 12,
+    name: "Django",
+    icon: "django",
+  },
+  {
+    id: 13,
+    name: "PostgreSQL",
+    icon: "postgresql",
+  },
+  {
+    id: 14,
+    name: "Docker",
+    icon: "docker",
+  },
+  {
+    id: 17,
+    name: "Astro",
+    icon: "astro",
+  },
+  {
+    id: 18,
+    name: "React Native",
+    icon: "react",
+  },
+  {
+    id: 19,
+    name: "OpenCV",
+    icon: "opencv",
+  },
+];
+---
+
+<div class="grid grid-cols-1 gap-6">
+  <div class="col-span-1">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      {
+        stack.map((item) => {
+          if (item.name === "Express") {
+            return (
+              <div class="flex flex-row items-center bg-gray-100 rounded-lg">
+                <div class="p-4">
+                  <i class={`devicon-express-original colored text-4xl`} />
+                </div>
+                <p class="text-lg mt-2">{item.name}</p>
+              </div>
+            );
+          }
+          return (
+            <div class="flex flex-row items-center bg-gray-100 rounded-lg">
+              <div class=" p-4">
+                <i class={`devicon-${item.icon}-plain colored text-4xl`} />
+              </div>
+              <p class="text-lg mt-2">{item.name}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</div>

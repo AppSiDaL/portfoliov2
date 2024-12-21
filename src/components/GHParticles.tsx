@@ -1,24 +1,58 @@
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { loadCanvasMaskPlugin } from "tsparticles-plugin-canvas-mask";
 export default function ParticlesHeader() {
   const [init, setInit] = useState(false);
-
+  const [icon, setIcon] = useState("sun");
   useEffect(() => {
+    if (localStorage.theme === "light") {
+      setIcon("moon");
+    } else {
+      setIcon("sun");
+    }
     initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
+      await loadSlim(engine)
+      await loadCanvasMaskPlugin(engine as any);
+      engine.setOnClickHandler((e, particles) => {
+        if (particles) {
+          for (const p of particles) {
+            console.log(p);
+            if (p.image.data.name === "sun") {
+              setIcon("moon");
+              localStorage.theme = "light";
+              document.documentElement.classList.remove("dark");
+            } else if (p.image.data.name === "moon") {
+              setIcon("sun");
+              localStorage.theme = "dark";
+              document.documentElement.classList.add("dark");
+            }
+          }
+        }
+      });
     }).then(() => {
       setInit(true);
     });
-  }, []);
+  }, [icon]);
   const options = useMemo(
     () => ({
       autoPlay: true,
+      backgroundMask: {
+        composite: "destination-out",
+        cover: {
+          opacity: 1,
+          color: {
+            value: "",
+          },
+        },
+        enable: false,
+      },
       clear: true,
       defaultThemes: {},
       delay: 0,
       fullScreen: {
         enable: false,
+        zIndex: 0,
       },
       detectRetina: true,
       duration: 0,
@@ -27,7 +61,7 @@ export default function ParticlesHeader() {
         detectsOn: "window",
         events: {
           onClick: {
-            enable: false,
+            enable: true,
             mode: "push",
           },
           onDiv: {
@@ -68,11 +102,11 @@ export default function ParticlesHeader() {
             distance: 200,
           },
           bubble: {
-            distance: 40,
+            distance: 400,
             duration: 2,
             mix: false,
-            opacity: 8,
-            size: 6,
+            opacity: 0.8,
+            size: 40,
             divs: {
               distance: 200,
               duration: 0.4,
@@ -88,7 +122,7 @@ export default function ParticlesHeader() {
             radius: 60,
           },
           grab: {
-            distance: 400,
+            distance: 100,
             links: {
               blink: false,
               consent: false,
@@ -121,8 +155,13 @@ export default function ParticlesHeader() {
             },
           },
           slow: {
-            factor: 1,
-            radius: 0,
+            factor: 3,
+            radius: 200,
+          },
+          particle: {
+            replaceCursor: false,
+            pauseOnStop: false,
+            stopDelay: 0,
           },
           light: {
             area: {
@@ -176,7 +215,7 @@ export default function ParticlesHeader() {
           },
         },
         color: {
-          value: ["#5C0405", "#DB090D", "#470304", "#FF0B0F"],
+          value: "#ffffff",
           animation: {
             h: {
               count: 0,
@@ -253,15 +292,15 @@ export default function ParticlesHeader() {
             options: {},
           },
           outModes: {
-            default: "bounce",
-            bottom: "bounce",
-            left: "bounce",
-            right: "bounce",
-            top: "bounce",
+            default: "out",
+            bottom: "out",
+            left: "out",
+            right: "out",
+            top: "out",
           },
           random: false,
           size: false,
-          speed: 1,
+          speed: 2,
           spin: {
             acceleration: 0,
             enable: false,
@@ -277,7 +316,7 @@ export default function ParticlesHeader() {
         },
         number: {
           density: {
-            enable: false,
+            enable: true,
             width: 1920,
             height: 1080,
           },
@@ -285,16 +324,13 @@ export default function ParticlesHeader() {
             mode: "delete",
             value: 0,
           },
-          value: 400,
+          value: 200,
         },
         opacity: {
-          value: {
-            min: 0.05,
-            max: 0.4,
-          },
+          value: 1,
           animation: {
             count: 0,
-            enable: true,
+            enable: false,
             speed: 2,
             decay: 0,
             delay: 0,
@@ -319,11 +355,35 @@ export default function ParticlesHeader() {
         shape: {
           close: true,
           fill: true,
-          options: {},
-          type: "circle",
+          options: {
+            image: [
+              {
+                name: "git",
+              },
+              {
+                name: "github",
+              },
+              {
+                name: "giticon",
+              },
+              {
+                name: "merge",
+              },
+              {
+                name: "tree",
+              },
+              {
+                name: "branch",
+              },
+              {
+                name: icon,
+              },
+            ],
+          },
+          type: "image",
         },
         size: {
-          value: 1,
+          value: 16,
           animation: {
             count: 0,
             enable: false,
@@ -338,6 +398,12 @@ export default function ParticlesHeader() {
         },
         stroke: {
           width: 0,
+        },
+        zIndex: {
+          value: 0,
+          opacityRate: 1,
+          sizeRate: 1,
+          velocityRate: 1,
         },
         destroy: {
           bounds: {},
@@ -413,14 +479,17 @@ export default function ParticlesHeader() {
           },
         },
         rotate: {
-          value: 0,
+          value: {
+            min: 0,
+            max: 360,
+          },
           animation: {
-            enable: false,
-            speed: 0,
+            enable: true,
+            speed: 5,
             decay: 0,
             sync: false,
           },
-          direction: "clockwise",
+          direction: "random",
           path: false,
         },
         orbit: {
@@ -442,11 +511,11 @@ export default function ParticlesHeader() {
         links: {
           blink: false,
           color: {
-            value: "random",
+            value: "#fff",
           },
           consent: false,
-          distance: 40,
-          enable: true,
+          distance: 100,
+          enable: false,
           frequency: 1,
           opacity: 1,
           shadow: {
@@ -479,7 +548,59 @@ export default function ParticlesHeader() {
       style: {},
       themes: [],
       zLayers: 100,
-      name: "Multiple Polygon Masks",
+      key: "images",
+      name: "Images",
+      preload: [
+        {
+          src: "git.png",
+          gif: false,
+          height: 32,
+          name: "git",
+          width: 32,
+        },
+        {
+          src: "github.png",
+          gif: false,
+          height: 32,
+          name: "github",
+          width: 32,
+        },
+        {
+          src: "giticon.webp",
+          gif: false,
+          height: 32,
+          name: "giticon",
+          width: 32,
+        },
+        {
+          src: "merge.png",
+          gif: false,
+          height: 32,
+          name: "merge",
+          width: 32,
+        },
+        {
+          src: "tree.png",
+          gif: false,
+          height: 32,
+          name: "tree",
+          width: 32,
+        },
+        {
+          src: "branch.webp",
+          gif: false,
+          height: 32,
+          name: "branch",
+          width: 32,
+        },
+        {
+          src: `${icon}.webp`,
+          gif: false,
+          height: 32,
+          name: icon,
+          width: 32,
+        },
+      ],
       motion: {
         disable: false,
         reduce: {
@@ -487,41 +608,19 @@ export default function ParticlesHeader() {
           value: true,
         },
       },
-      polygon: {
-        draw: {
-          enable: true,
-          stroke: {
-            color: {
-              value: "#fff",
-            },
-            width: 0.5,
-            opacity: 0.2,
-          },
-        },
-        enable: true,
-        inline: {
-          arrangement: "equidistant",
-        },
-        move: {
-          radius: 10,
-          type: "path",
-        },
-        scale: 1,
-        type: "inline",
-        position: {
-          x: 30,
-          y: 30,
-        },
-      },
     }),
-    []
+    [icon]
   );
 
   if (init) {
     return (
       <>
-        <div className="h-[35vh] w-full">
-          <Particles id="ts-particles" options={options as any} className="h-full w-full" />
+        <div className="">
+          <Particles
+            id="ts"
+            options={options as any}
+            className="h-full w-full"
+          />
         </div>
       </>
     );

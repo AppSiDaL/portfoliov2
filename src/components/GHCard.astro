@@ -1,0 +1,34 @@
+---
+import GHParticles from "./GHParticles";
+import { Image } from "astro:assets";
+const data = await fetch("https://api.github.com/users/AppSiDaL").then((res) =>
+  res.json()
+);
+---
+
+<div class="ml-4 rounded-lg border-red-100 border-2">
+  <div
+    class="relative w-full h-full bg-cover bg-center flex flex-col items-center justify-center"
+  >
+    <GHParticles client:idle />
+    <Image
+      src={data.avatar_url}
+      alt="GitHub Avatar"
+      width="200"
+      height="200"
+      class="rounded-full mt-[-200px]"
+    />
+    <h1 class="mt-4 text-3xl font-bold">{data.name}</h1>
+    <h2 class="text-xl">{data.login}</h2>
+    <h2 class="mt-2 text-lg">
+      {data.bio}
+    </h2>
+    <img
+      src="https://ghchart.rshah.org/ff0000/AppSiDaL"
+      alt="GitHub Logo"
+      class="w-[95%]"
+    />
+    <button class="followButton mt-2">Follow</button>
+    <p class="mt-2">76 Followers 15 Following</p>
+  </div>
+</div>

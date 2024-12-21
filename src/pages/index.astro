@@ -1,17 +1,43 @@
 ---
+import Image from "astro/components/Image.astro";
 import ParticlesHeader from "../components/ParticlesHeader";
 import Layout from "../layouts/Layout.astro";
+import DescriptionCard from "../components/DescriptionCard";
+import GHCard from "../components/GHCard.astro";
+import ProjectsList from "../components/ProjectsList.astro";
+import ChangeThemeButton from "../components/ChangeThemeButton.astro";
 ---
 
 <Layout title="Welcome to my portfolio" description="Welcome to my portfolio">
-  <div class="fixed">
-    <div class="profileInfo">
-      <ParticlesHeader client:idle />
-      <div class="info">
-        <div class="data">
-          asdas
+  <ParticlesHeader client:idle />
+  <div class="mt-[-150px]">
+    <div class="w-screen flex flex-row">
+      <Image
+        src="/profile.jpg"
+        alt="A bird."
+        width="200"
+        height="200"
+        class="rounded-full ml-20"
+      />
+      <div class="flex flex-col m-auto ml-2">
+        <h1 class="text-4xl font-bold">Gilberto DN</h1>
+        <p class="">Software Engineer</p>
+        <p class="">@davalosng</p>
+      </div>
+      <div class="align-end mr-10 flex flex-col m-auto">
+        <DescriptionCard client:idle />
+      </div>
+    </div>
+    <div>
+      <div class="relative z-10 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="col-span-1 md:col-span-1">
+          <GHCard is:raw />
+        </div>
+        <div class="col-span-1 md:col-span-2 h-[500px] overflow-auto">
+          <ProjectsList />
         </div>
       </div>
+      <ChangeThemeButton />
     </div>
   </div>
 </Layout>

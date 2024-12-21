@@ -14,6 +14,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.3
         version: 5.1.3(astro@5.0.5(jiti@1.21.6)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1))(tailwindcss@3.4.16)
+      '@tsparticles/engine':
+        specifier: ^3.7.1
+        version: 3.7.1
       '@tsparticles/react':
         specifier: ^3.0.0
         version: 3.0.0(@tsparticles/engine@3.7.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -41,6 +44,12 @@ importers:
       tailwindcss:
         specifier: ^3.4.16
         version: 3.4.16
+      tsparticles-plugin-canvas-mask:
+        specifier: ^2.12.0
+        version: 2.12.0
+      use-scramble:
+        specifier: ^2.2.15
+        version: 2.2.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@tailwindcss/typography':
         specifier: ^0.5.15
@@ -1952,6 +1961,10 @@ packages:
     resolution: {integrity: sha512-ZjDIYex6jBJ4iMc9+z0uPe7SgBnmb6l+EJm83MPIsOny9lPpetMsnw/8YJ3xdxn8hV+S3myTpTN1CkOVmFv0QQ==}
     deprecated: starting from tsparticles v3 the packages are now moved to @tsparticles/package-name instead of tsparticles-package-name
 
+  tsparticles-plugin-canvas-mask@2.12.0:
+    resolution: {integrity: sha512-eFoEbkHKj/4+5ECyNxnXoXDEJLDEOGFwulwbRlO3lqXKsXLLqz74D7uQLSbRlnQWDn4wIuinbuL+dMWyYgWlJg==}
+    deprecated: starting from tsparticles v3 the packages are now moved to @tsparticles/package-name instead of tsparticles-package-name
+
   type-fest@4.30.1:
     resolution: {integrity: sha512-ojFL7eDMX2NF0xMbDwPZJ8sb7ckqtlAi1GsmgsFXvErT9kFTk1r0DuQKvrCh73M6D4nngeHJmvogF9OluXs7Hw==}
     engines: {node: '>=16'}
@@ -1999,6 +2012,13 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  use-scramble@2.2.15:
+    resolution: {integrity: sha512-3+ngTV6OpkY9JT75FM4JYcspmpP7cd/h0/5KqsMU2jcdBD+SAuBMmLqLu0N3/7t8NsfdwJjD3BBeKtT+qZWKew==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -4365,6 +4385,10 @@ snapshots:
 
   tsparticles-engine@2.12.0: {}
 
+  tsparticles-plugin-canvas-mask@2.12.0:
+    dependencies:
+      tsparticles-engine: 2.12.0
+
   type-fest@4.30.1: {}
 
   typescript@5.7.2: {}
@@ -4428,6 +4452,11 @@ snapshots:
       browserslist: 4.24.3
       escalade: 3.2.0
       picocolors: 1.1.1
+
+  use-scramble@2.2.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   util-deprecate@1.0.2: {}
 

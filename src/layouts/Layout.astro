@@ -36,6 +36,11 @@ const meta = {
     <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
     <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
     <meta content="#ffffff" name="theme-color" />
     <meta content="#ffffff" name="msapplication-TileColor" />
     <slot name="head" />
@@ -51,9 +56,7 @@ const meta = {
       }
     </script>
   </head>
-  <body
-    class="bg-white text-gray-900 dark:bg-black dark:text-gray-100"
-  >
+  <body class="bg-white text-gray-900 dark:bg-black dark:text-gray-100">
     <main>
       <slot />
     </main>
