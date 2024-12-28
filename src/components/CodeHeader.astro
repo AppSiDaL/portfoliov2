@@ -1,0 +1,34 @@
+---
+import { Code } from "astro:components";
+import { Image } from "astro:assets";
+
+const text = `
+const AppSiDaL = {
+  age: 21,
+  spokenLanguages: ["Spanish", "English"],
+  location: "Mexico",
+  email: "davalosng@gmail.com",
+  graduatedAs: "Sistems Engineer",
+  graduatedAt: "TESJo",
+};
+const Theme = theme ? "Dark" : "Light";
+`;
+
+const { avatarURL } = Astro.props;
+---
+
+<div class="relative rounded-lg shadow-lg max-w-full min-w-full">
+  <Code code={text} lang="js" class="w-auto h-max mt-0 mb-0" />
+  <div class="absolute bottom-0 right-0 m-4">
+    <Image
+      src={avatarURL}
+      alt="GitHub Avatar"
+      width="200"
+      height="200"
+      class="rounded-full"
+    />
+  </div>
+  <div class="absolute top-0 right-0 m-4">
+    <i class="devicon-github-original text-white text-4xl"></i>
+  </div>
+</div>
