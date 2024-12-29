@@ -2,8 +2,7 @@
 import { Code } from "astro:components";
 import { Image } from "astro:assets";
 
-const text = `
-const AppSiDaL = {
+const text = `const AppSiDaL = {
   age: 21,
   spokenLanguages: ["Spanish", "English"],
   location: "Mexico",
@@ -11,14 +10,23 @@ const AppSiDaL = {
   graduatedAs: "Sistems Engineer",
   graduatedAt: "TESJo",
 };
-const Theme = theme ? "Dark" : "Light";
+//Try to change the theme, click on the text
+const Theme = (() => {
+  return "Dark";
+});
 `;
 
 const { avatarURL } = Astro.props;
 ---
 
 <div class="relative rounded-lg shadow-lg max-w-full min-w-full">
-  <Code code={text} lang="js" class="w-auto h-max mt-0 mb-0" />
+  <Code
+    code={text}
+    lang="js"
+    class="w-auto h-max mt-0 mb-0 bg-slate-600"
+    id="code"
+    theme="github-light"
+  />
   <div class="absolute bottom-0 right-0 m-4">
     <Image
       src={avatarURL}
@@ -29,6 +37,83 @@ const { avatarURL } = Astro.props;
     />
   </div>
   <div class="absolute top-0 right-0 m-4">
-    <i class="devicon-github-original text-white text-4xl"></i>
+    <i class="devicon-github-original text-black dark:text-white text-4xl"></i>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const codeText = document.querySelector("code");
+    if (!codeText) return;
+
+    codeText.innerHTML = codeText.innerHTML.replace(
+      "Dark",
+      `<span id="dark-mode-toggle">Dark</span>`
+    );
+    codeText.setAttribute("theme", "light-plus");
+
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    if (!darkModeToggle) return;
+
+    darkModeToggle.addEventListener("click", handleClick);
+
+    darkModeToggle.addEventListener("mouseover", () => {
+      darkModeToggle.style.cursor = "pointer";
+      darkModeToggle.style.textDecoration = "underline";
+    });
+    darkModeToggle.addEventListener("mouseout", () => {
+      darkModeToggle.style.textDecoration = "none";
+    });
+  });
+
+  function handleClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target) return;
+    const theme = target.innerText;
+    const codeComponent = document.getElementById("code");
+    if (!codeComponent) return;
+
+    if (theme === "Dark") {
+      localStorage.theme = "dark";
+      document.documentElement.classList.add("dark");
+      changeCodeTheme("dark");
+      target.innerText = "Light";
+    } else {
+      localStorage.theme = "light";
+      document.documentElement.classList.remove("dark");
+      changeCodeTheme("light");
+      target.innerText = "Dark";
+    }
+  }
+  function changeCodeTheme(theme: string) {
+    const darkbg = "#24292e";
+    const lightbg = "#fff";
+    const darkColors: { [key: string]: string } = {
+      "rgb(203, 118, 118)": "#F97583",
+      "rgb(0, 92, 197)": "#79B8FF",
+      "rgb(36, 41, 46)": "#E1E4E8",
+      "rgb(3, 47, 98)": "#9ECBFF",
+    };
+
+    const lightColors: { [key: string]: string } = {
+      "rgb(249, 117, 131)": "#D73A49", // #CB7676 const
+      "rgb(121, 184, 255)": "#005CC5", // #005CC5 name
+      "rgb(225, 228, 232)": "#24292E", // #24292E brackets
+      "rgb(158, 203, 255)": "#032F62", // #032F62 string
+    };
+    const preElement = document.querySelector("#code");
+    if (preElement) {
+      (preElement as HTMLElement).style.backgroundColor =
+        theme === "dark" ? darkbg : lightbg;
+    }
+    const spans = document.querySelectorAll("#code span");
+    spans.forEach((span) => {
+      const currentColor = (span as HTMLElement).style.color;
+      if (theme === "dark" && darkColors[currentColor]) {
+        (span as HTMLElement).style.color = darkColors[currentColor];
+      } else if (theme === "light" && lightColors[currentColor]) {
+        (span as HTMLElement).style.color = lightColors[currentColor];
+      }
+    });
+  }
+</script>
