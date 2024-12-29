@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -66,8 +67,3 @@ input[type="email"] {
   text-decoration: line-through;
 }
 
-@media screen(md) {
-  .sticky-nav {
-    @apply mx-0;
-  }
-}
