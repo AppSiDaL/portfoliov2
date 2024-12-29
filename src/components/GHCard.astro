@@ -1,29 +1,34 @@
 ---
 import CodeHeader from "./CodeHeader.astro";
 import GitCalendarAstro from "./GitCalendar.astro";
-const data = await fetch("https://api.github.com/users/AppSiDaL")
-  .then((res) => res.json())
-  .catch(() => {
-    return {
-      bio: "adasd",
-      login: "AppSiDaL",
-      avatar_url: "https://avatars.githubusercontent.com/u/112730350?v=4",
-      name: "asdasd",
-    };
-  });
+import GithubService from "../services/GithubGraph";
+
+const { data } = await GithubService.getUser(
+  import.meta.env.PUBLIC_GITHUB_TOKEN, // token in .env file
+  "AppSiDaL" // your GitHub account name
+).catch((err) => {
+  return {
+    bio: "adasd",
+    login: "AppSiDaL",
+    avatar_url: "https://avatars.githubusercontent.com/u/112730350?v=4",
+    name: "asdasd",
+  };
+});
+
+const { repositoryOwner } = data;
+const { avatarUrl, name, login, bio } = repositoryOwner;
 ---
 
 <div class="ml-4 rounded-lg border-red-100 border-2">
   <div
     class="relative w-full h-full bg-cover bg-center flex flex-col items-center justify-center"
   >
-    <CodeHeader avatarURL={data.avatar_url} />
-    <h1 class="mt-4 text-3xl font-bold">{data.name}</h1>
-    <h2 class="text-xl">{data.login}</h2>
+    <CodeHeader avatarURL={avatarUrl} />
+    <h1 class="mt-4 text-3xl font-bold">{name}</h1>
+    <h2 class="text-xl">{login}</h2>
     <h2 class="mt-2 text-lg">
-      {data.bio}
+      {bio}
     </h2>
-
     <GitCalendarAstro />
     <button class="followButton mt-2">Follow</button>
     <p class="mt-2">76 Followers 15 Following</p>
