@@ -1,5 +1,7 @@
 <section>
-  <div class="flex flex-col items-center justify-center">
+  <div
+    class="flex flex-col items-center justify-center border border-gray-200 rounded-lg p-1"
+  >
     <div id="contributions" class="flex gap-[1px]">
       {
         Array.apply(null, Array(53)).map((week, i) => {
@@ -12,8 +14,7 @@
                 return (
                   <div
                     id={`week-${i}-day-${j}`}
-                    class="h-2 w-2 lg:h-2 lg:w-2"
-                    style="background-color: rgba(235,	237,	240, 0.15);"
+                    class="h-2 w-2 lg:h-2 lg:w-2 dark:bg-[#101217] bg-[#ebedf0]"
                   />
                 );
               })}
@@ -55,7 +56,7 @@
   /**
    * Fetch against GitHub GraphQL API
    */
-import GithubService from "../services/GithubGraph";
+  import GithubService from "../services/GithubGraph";
 
   /**
    * Run fetch from above
@@ -88,12 +89,25 @@ import GithubService from "../services/GithubGraph";
   /**
    * Loop through the weeks + add them to the parent div
    */
+  const githubDark = {
+    "#216e39": "#27d545",
+    "#30a14e": "#10983d",
+    "#40c463": "#00602d",
+    "#9be9a8": "#003820",
+    "#ebedf0": "#161b22",
+  };
+  const theme = localStorage.getItem("theme");
   weeks.forEach(({ contributionDays }, i) => {
     // Loop through each week's days + add them to their week
     contributionDays.forEach(({ color, date, contributionCount }, j) => {
       // Get + update each day square
       const dayDiv = document.getElementById(`week-${i}-day-${j}`);
-      dayDiv?.setAttribute("style", `background-color: ${color}`);
+      const finalColor =
+        theme === "dark" ? githubDark[color as keyof typeof githubDark] : color;
+      if (color === "#216e39") {
+        console.log("adads");
+      }
+      dayDiv?.setAttribute("style", `background-color: ${finalColor}`);
       dayDiv?.setAttribute(
         "title",
         `${date} - ${contributionCount} public commits`
