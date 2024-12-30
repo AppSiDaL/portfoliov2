@@ -85,18 +85,24 @@ const stack = [
         stack.map((item) => {
           if (item.name === "Express") {
             return (
-              <div class="flex flex-row items-center bg-gray-100 rounded-lg">
+              <div class="flex flex-row items-center bg-gray-100 dark:bg-zinc-800 rounded-lg">
                 <div class="p-4">
-                  <i class={`devicon-express-original colored text-4xl`} />
+                  <i
+                    id={item.name}
+                    class={`devicon-express-original colored text-4xl`}
+                  />
                 </div>
                 <p class="text-lg mt-2">{item.name}</p>
               </div>
             );
           }
           return (
-            <div class="flex flex-row items-center bg-gray-100 rounded-lg">
+            <div class="flex flex-row items-center bg-gray-100 dark:bg-zinc-800 rounded-lg">
               <div class=" p-4">
-                <i class={`devicon-${item.icon}-plain colored text-4xl`} />
+                <i
+                  id={item.name}
+                  class={`devicon-${item.icon}-plain  colored text-4xl`}
+                />
               </div>
               <p class="text-lg mt-2">{item.name}</p>
             </div>
