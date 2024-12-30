@@ -44,13 +44,18 @@ const { avatarURL } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const codeText = document.querySelector("code");
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      changeCodeTheme("dark");
+      changeIconsColor("dark");
+      changeContributionColors("dark");
+    }
     if (!codeText) return;
 
     codeText.innerHTML = codeText.innerHTML.replace(
       "Dark",
-      `<span id="dark-mode-toggle">Dark</span>`
+      `<span id="dark-mode-toggle">${theme === "dark" ? "Light" : "Dark"}</span>`
     );
-    codeText.setAttribute("theme", "light-plus");
 
     const darkModeToggle = document.getElementById("dark-mode-toggle");
     if (!darkModeToggle) return;
@@ -77,14 +82,19 @@ const { avatarURL } = Astro.props;
       localStorage.theme = "dark";
       document.documentElement.classList.add("dark");
       changeCodeTheme("dark");
+      changeIconsColor("dark");
+      changeContributionColors("dark");
       target.innerText = "Light";
     } else {
       localStorage.theme = "light";
       document.documentElement.classList.remove("dark");
       changeCodeTheme("light");
+      changeIconsColor("light");
+      changeContributionColors("light");
       target.innerText = "Dark";
     }
   }
+
   function changeCodeTheme(theme: string) {
     const darkbg = "#24292e";
     const lightbg = "#fff";
@@ -96,7 +106,7 @@ const { avatarURL } = Astro.props;
     };
 
     const lightColors: { [key: string]: string } = {
-      "rgb(249, 117, 131)": "#D73A49", // #CB7676 const
+      "rgb(249, 117, 131)": "#CB7676", // #CB7676 const
       "rgb(121, 184, 255)": "#005CC5", // #005CC5 name
       "rgb(225, 228, 232)": "#24292E", // #24292E brackets
       "rgb(158, 203, 255)": "#032F62", // #032F62 string
@@ -114,6 +124,49 @@ const { avatarURL } = Astro.props;
       } else if (theme === "light" && lightColors[currentColor]) {
         (span as HTMLElement).style.color = lightColors[currentColor];
       }
+    });
+  }
+
+  function changeIconsColor(theme: string) {
+    const expressIcon = document.querySelector("#Express");
+    const djangoIcon = document.querySelector("#Django");
+
+    if (expressIcon && djangoIcon) {
+      if (theme === "dark") {
+        (djangoIcon as HTMLElement).style.color = "#fff";
+        (expressIcon as HTMLElement).style.color = "#fff";
+      } else {
+        (djangoIcon as HTMLElement).style.color = "#000";
+        (expressIcon as HTMLElement).style.color = "#000";
+      }
+    }
+  }
+
+  function changeContributionColors(theme: string) {
+    const githubDark: { [key: string]: string } = {
+      "rgb(33, 110, 57)": "#27d545",
+      "rgb(48, 161, 78)": "#10983d",
+      "rgb(64, 196, 99)": "#00602d",
+      "rgb(155, 233, 168)": "#003820",
+      "rgb(235, 237, 240)": "#161b22",
+    };
+
+    const lightColor: { [key: string]: string } = {
+      "rgb(39, 213, 69)": "#216e39",
+      "rgb(16, 152, 61)": "#30a14e",
+      "rgb(0, 96, 45)": "#40c463",
+      "rgb(0, 56, 32)": "#9be9a8",
+      "rgb(22, 27, 34)": "#ebedf0",
+    };
+
+    const days = document.querySelectorAll("[id^='week-']");
+    days.forEach((day) => {
+      const dayElement = day as HTMLElement;
+      const currentColor = getComputedStyle(dayElement).backgroundColor;
+      console.log(currentColor)
+      const finalColor =
+        theme === "dark" ? githubDark[currentColor] : lightColor[currentColor];
+      dayElement.style.backgroundColor = finalColor;
     });
   }
 </script>
