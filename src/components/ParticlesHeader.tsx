@@ -520,8 +520,12 @@ export default function ParticlesHeader() {
   if (init) {
     return (
       <>
-        <div className="h-[35vh] w-full">
-          <Particles id="ts-particles" options={options as any} className="h-full w-full" />
+        <div className="h-[35vh] w-full z-0">
+          <Particles
+            id="ts-particles"
+            options={options as any}
+            className="h-full w-full"
+          />
         </div>
       </>
     );
