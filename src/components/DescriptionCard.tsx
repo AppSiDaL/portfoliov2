@@ -7,7 +7,7 @@ export default function DescriptionCard() {
   });
 
   return (
-    <div className="border border-gray-300 bg-slate-50 dark:bg-zinc-800 rounded-lg p-5 m-2 shadow-md relative mx-auto max-h-[10vh] min-h-[5vh] max-w-[30vw] min-w-[30vw] transform -translate-y-1/3">
+    <div className="border border-gray-300 bg-slate-50 dark:bg-zinc-800 rounded-lg p-5 m-2 shadow-md  sm:max-h-[10vh] sm:min-h-[5vh] sm:max-w-[30vw] sm:min-w-[30vw] text-center sm:text-left">
       <a ref={ref} onMouseEnter={replay} className="" />
     </div>
   );
