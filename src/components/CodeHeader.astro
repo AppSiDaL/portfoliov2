@@ -1,7 +1,7 @@
 ---
 import { Code } from "astro:components";
 import { Image } from "astro:assets";
-
+import gitProfile from "../assets/gitProfile.webp";
 const text = `const AppSiDaL = {
   age: 21,
   spokenLanguages: ["Spanish", "English"],
@@ -10,13 +10,12 @@ const text = `const AppSiDaL = {
   graduatedAs: "Sistems Engineer",
   graduatedAt: "TESJo",
 };
-//Try to change the theme, click on the text
+/* Try to change the theme.
+Click on the rtrn str. */
 const Theme = (() => {
   return "Dark";
 });
 `;
-
-const { avatarURL } = Astro.props;
 ---
 
 <div class="relative rounded-lg shadow-lg max-w-full min-w-full">
@@ -29,11 +28,11 @@ const { avatarURL } = Astro.props;
   />
   <div class="absolute bottom-0 right-0 m-4">
     <Image
-      src={avatarURL}
+      src={gitProfile}
       alt="GitHub Avatar"
-      width="200"
-      height="200"
-      class="rounded-full"
+      widths={[150, 200]}
+      sizes="(max-width: 640px) 150px, 200px"
+      class="rounded-full h-[150px] w-[150px] md:h-[200px] md:w-[200px]"
     />
   </div>
   <div class="absolute top-0 right-0 m-4">
@@ -163,7 +162,7 @@ const { avatarURL } = Astro.props;
     days.forEach((day) => {
       const dayElement = day as HTMLElement;
       const currentColor = getComputedStyle(dayElement).backgroundColor;
-      console.log(currentColor)
+      console.log(currentColor);
       const finalColor =
         theme === "dark" ? githubDark[currentColor] : lightColor[currentColor];
       dayElement.style.backgroundColor = finalColor;
