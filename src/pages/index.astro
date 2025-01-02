@@ -28,11 +28,13 @@ import ProjectsList from "../components/ProjectsList.astro";
       </div>
     </div>
     <div>
-      <div class="relative z-10 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div
+        class="relative z-10 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 h-[550px]"
+      >
         <div class="col-span-1 md:col-span-1">
           <GHCard is:raw />
         </div>
-        <div class="col-span-1 md:col-span-2 h-[550px] sm:overflow-auto">
+        <div class="col-span-1 md:col-span-2 sm:overflow-auto">
           <ProjectsList />
         </div>
       </div>
