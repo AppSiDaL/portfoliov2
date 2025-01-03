@@ -5,6 +5,8 @@ import Layout from "../layouts/Layout.astro";
 import DescriptionCard from "../components/DescriptionCard";
 import GHCard from "../components/GHCard.astro";
 import ProjectsList from "../components/ProjectsList.astro";
+import Stack from "../components/Stack.astro";
+import ExpList from "../components/ExpList.astro";
 ---
 
 <Layout title="Welcome to my portfolio" description="Welcome to my portfolio">
@@ -35,6 +37,8 @@ import ProjectsList from "../components/ProjectsList.astro";
           <GHCard is:raw />
         </div>
         <div class="col-span-1 md:col-span-2 sm:overflow-auto">
+          <Stack />
+          <ExpList />
           <ProjectsList />
         </div>
       </div>
