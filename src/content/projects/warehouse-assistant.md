@@ -16,10 +16,11 @@ stack:
     Edge TPU,
   ]
 start: 2024-09
-end: null
+end: still
 img: warehouse-assistant.webp
 video: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 abstract: Sistema de visión artificial para automatizar la auditoría de inventarios en almacenes.
+url: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 ---
 
 En promedio se suelen perder de 2 a 3 semanas al año en la auditoría de inventarios en almacenes. El asistente de almacen es un sistema de visión artificial que automatiza la auditoría de inventarios en almacenes. El sistema es capaz de identificar y contar los productos en un estante en cuestión de segundos usando inferencia en la nube y en el borde. Ademas de esto el sistema se basa en normativas industriales como la ANSI y la OSHA de marcaje de suelos para detectar posibles infracciones.
