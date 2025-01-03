@@ -16,6 +16,14 @@ export default {
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
       },
+      colors: {
+        scrollbarLight: '#888',
+        scrollbarDark: '#555',
+        scrollbarTrackLight: '#f1f1f1',
+        scrollbarTrackDark: '#2d2d2d',
+        scrollbarThumbHoverLight: '#555',
+        scrollbarThumbHoverDark: '#333',
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
@@ -95,7 +103,13 @@ export default {
     },
   },
   variants: {
-    typography: ['dark'],
+    extend: {
+      scrollbar: ['dark'],
+      typography: ['dark'],
+    },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwind-scrollbar'),
+  ],
 };
