@@ -6,7 +6,7 @@ start: 2022-09
 end: still
 img: tesjoclima.webp
 video: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
-abstract: Aplicación web para conocer el clima del TESJO desde cualquier parte del mundo.
+abstract: Aplicación web para conocer el clima del TESJO desde cualquier parte del mundo. Se recolecta informacion de una estacion meteorologica ubicada en el TESJO y se procesa con un modelo de machine learning para predecir el clima futuro.
 url: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 ---
 
