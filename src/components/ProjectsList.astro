@@ -8,7 +8,7 @@ const projects = await getCollection("projects");
 <section class="mt-8">
   <div class="grid grid-cols-1 gap-6">
     <h2
-      class="text-2xl font-bold text-center bg-gray-100 dark:bg-zinc-800 p-2 rounded-sm"
+      class="text-2xl font-bold text-center bg-gray-100 dark:bg-zinc-800 p-2 rounded-lg"
     >
       Side Projects
     </h2>
@@ -18,7 +18,7 @@ const projects = await getCollection("projects");
         const { title, where, stack, start, end, img, video, abstract } = data;
         return (
           <article class="bg-gray-100 dark:bg-zinc-800 flex flex-col items-center md:items-start md:flex-row p-6 rounded-lg shadow-md w-full max-h-max overflow-hidden">
-            <div class="md:w-1/4 flex-shrink-0 mb-4 md:mb-0">
+            <div class="md:w-1/4 flex-shrink-0 mb-4 md:mb-0 md:flex md:flex-col md:items-center md:justify-center md:h-full text-center">
               <Image
                 src={`/${img}`}
                 alt="A project"
@@ -31,12 +31,6 @@ const projects = await getCollection("projects");
               <h3 class="text-2xl dark:text-white font-bold mb-2">{title}</h3>
               <p class="text-gray-600 dark:text-gray-100 mb-4">{where}</p>
               <div class="prose mb-4 dark:text-white">{abstract}</div>
-              <a
-                href={`/projects/${slug}`}
-                class="text-blue-500 hover:underline"
-              >
-                Read more
-              </a>
             </div>
             <div class="md:w-1/3 p-4 overflow-hidden text-center md:text-left">
               <h4 class="text-xl font-bold mb-2">Stack</h4>
