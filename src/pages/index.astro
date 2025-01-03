@@ -30,14 +30,11 @@ import ExpList from "../components/ExpList.astro";
       </div>
     </div>
     <div>
-      <div
-        class="relative z-10 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 h-[550px]"
-      >
+      <div class="relative z-10 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 h-[550px]">
         <div class="col-span-1 md:col-span-1">
           <GHCard is:raw />
         </div>
-        <div class="col-span-1 md:col-span-2 sm:overflow-auto">
-          <Stack />
+        <div class="col-span-1 md:col-span-2 sm:overflow-auto scrollbar-thin scrollbar-thumb-scrollbarLight scrollbar-track-scrollbarTrackLight dark:scrollbar-thumb-scrollbarDark dark:scrollbar-track-scrollbarTrackDark">
           <ExpList />
           <ProjectsList />
         </div>
