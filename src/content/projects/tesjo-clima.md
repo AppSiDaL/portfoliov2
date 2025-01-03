@@ -3,10 +3,11 @@ title: TESJO Clima
 where: Tecnologico de Estudios Superiores de Jocotitlan
 stack: [React, Node.js, Express, PostgreSQL, Scikit-learn, React Query]
 start: 2022-09
-end: null
+end: still
 img: tesjoclima.webp
 video: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 abstract: Aplicación web para conocer el clima del TESJO desde cualquier parte del mundo.
+url: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 ---
 
 Tesjo Clima es una aplicación web que permite a los usuarios conocer el clima del TESJO desde cualquier parte del mundo. La aplicación muestra información detallada sobre la temperatura, humedad, velocidad del viento y pronóstico del clima. Se recolecta informacion de una estacion meteorologica ubicada en el TESJO y se procesa con un modelo de machine learning para predecir el clima futuro.
