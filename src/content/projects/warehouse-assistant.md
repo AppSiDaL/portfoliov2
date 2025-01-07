@@ -19,7 +19,7 @@ start: 2024-09
 end: still
 img: warehouse-assistant.webp
 video: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
-abstract: Sistema de visión artificial para automatizar la auditoría de inventarios en almacenes. El sistema es capaz de identificar y contar los productos en un estante en cuestión de segundos usando inferencia en la nube y en el borde. Ademas de esto el sistema se basa en normativas industriales como la ANSI y la OSHA de marcaje de suelos para detectar posibles infracciones.
+abstract: Artificial vision system to automate inventory auditing in warehouses. The system is capable of identifying and counting products on a shelf in a matter of seconds using cloud and edge inference. In addition to this, the system is based on industrial regulations such as ANSI and OSHA for floor marking to detect possible violations.
 url: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 ---
 
