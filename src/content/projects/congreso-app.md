@@ -6,7 +6,7 @@ start: 2021-09
 end: still
 img: congresoapp.webp
 video: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
-abstract: Aplicacion movil para el registro de asistentes a eventos en el TESJO. La aplicación permite a los asistentes ver los eventos disponibles, registrarse en ellos, calificarlos y poder pasar asistencia en el evento para obtener un certificado de asistencia.
+abstract: Mobile application for the registration of attendees to events at the TESJO. The app allows attendees to view available events, register for them, rate them, and be able to pass attendance at the event to obtain a certificate of attendance.
 url: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 ---
 
