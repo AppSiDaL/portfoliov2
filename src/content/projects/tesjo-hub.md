@@ -6,7 +6,7 @@ start: 2023-09
 end: still
 img: tesjohub.webp
 video: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
-abstract: Aplicación móvil con funcionalidades de red social para la comunidad estudiantil del Tecnológico de Estudios Superiores de Jocotitlan. La aplicación permite a los estudiantes compartir publicaciones, eventos, noticias y proyectos con la comunidad estudiantil.
+abstract: Mobile application with social network functionalities for the student community of the Tecnológico de Estudios Superiores de Jocotitlan. The application allows students to share posts, events, news and projects with the student community.
 url: https://www.youtube.com/watch?v=8Q6J9Q1Z9ZQ
 ---
 
